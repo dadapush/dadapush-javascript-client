@@ -1,0 +1,30 @@
+{
+  "name": "dadapush-client",
+  "version": "1.0.0",
+  "description": "DaDaPush_Real_time_Notifications_AppSend_real_time_notifications_through_our_API_without_coding_and_maintaining_your_own_app_for_iOS_or_Android_devices_",
+  "license": "Apache 2.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "prepack": "npm run build",
+    "test": "mocha --compilers js:babel-core/register --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "superagent": "3.7.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
