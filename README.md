@@ -19,9 +19,7 @@ For more information, please visit [https://www.dadapush.com](https://www.dadapu
 
 #### npm
 
-To publish the library as a [npm](https://www.npmjs.com/), please follow the procedure in ["Publishing npm packages"](https://docs.npmjs.com/getting-started/publishing-npm-packages).
-
-Then install it via:
+Install it via:
 
 ```shell
 npm install dadapush-client --save
@@ -65,7 +63,7 @@ If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID
 then install it via:
 
 ```shell
-    npm install GIT_USER_ID/GIT_REPO_ID --save
+    npm install dadapush/dadapush-javascript-client --save
 ```
 
 ### For browser
