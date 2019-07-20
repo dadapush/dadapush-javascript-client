@@ -59,8 +59,7 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID/GIT_REPO_ID
-then install it via:
+install via git repository:
 
 ```shell
     npm install dadapush/dadapush-javascript-client --save
