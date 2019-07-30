@@ -1,6 +1,6 @@
 {
   "name": "dadapush-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DaDaPush: Real-time Notifications App\nSend real-time notifications through our API without coding and maintaining your own app for iOS or Android devices.",
   "license": "Apache-2.0",
   "main": "dist/index.js",
