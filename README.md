@@ -106,7 +106,7 @@ var DadapushClient = require('dadapush-client');
 
 var api = new DadapushClient.DaDaPushMessageApi()
 var body = new DadapushClient.MessagePushRequest(); // {MessagePushRequest} body
-channelToken = "channelToken_example" // {String} see: https://www.dadapush.com/channel/list
+var channelToken = "channelToken_example" // {String} see: https://www.dadapush.com/channel/list
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -115,8 +115,6 @@ var callback = function(error, data, response) {
   }
 };
 api.createMessage(body, channelToken, callback);
-
-
 ```
 
 ## Documentation for API Endpoints
