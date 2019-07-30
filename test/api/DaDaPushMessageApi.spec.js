@@ -11,83 +11,91 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD.
-    define(['expect.js', process.cwd()+'/src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd()+'/src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.DadapushClient);
-  }
-}(this, function(expect, DadapushClient) {
-  'use strict';
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD.
+        define(['expect.js', process.cwd() + '/src/index'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // CommonJS-like environments that support module.exports, like Node.
+        factory(require('expect.js'), require(process.cwd() + '/src/index'));
+    } else {
+        // Browser globals (root is window)
+        factory(root.expect, root.ApiClient);
+    }
+}(this, function (expect, DaDaPushClient) {
+    'use strict';
 
-  var instance;
+    var instance;
+    var channelToken = "ctb3lwO6AeiZOwqZgp8BE8980FdNgp0cp6MCf";
 
-  beforeEach(function() {
-    instance = new DadapushClient.DaDaPushMessageApi();
-  });
-
-  var getProperty = function(object, getter, property) {
-    // Use getter method if present; otherwise, get the property directly.
-    if (typeof object[getter] === 'function')
-      return object[getter]();
-    else
-      return object[property];
-  }
-
-  var setProperty = function(object, setter, property, value) {
-    // Use setter method if present; otherwise, set the property directly.
-    if (typeof object[setter] === 'function')
-      object[setter](value);
-    else
-      object[property] = value;
-  }
-
-  describe('DaDaPushMessageApi', function() {
-    describe('createMessage', function() {
-      it('should call createMessage successfully', function(done) {
-        //uncomment below and update the code to test createMessage
-        //instance.createMessage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+    beforeEach(function () {
+        var apiClient = new DaDaPushClient.ApiClient();
+        apiClient.basePath = "http://127.0.0.1:8080";
+        instance = new DaDaPushClient.DaDaPushMessageApi(apiClient);
     });
-    describe('deleteMessage', function() {
-      it('should call deleteMessage successfully', function(done) {
-        //uncomment below and update the code to test deleteMessage
-        //instance.deleteMessage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+
+    var getProperty = function (object, getter, property) {
+        // Use getter method if present; otherwise, get the property directly.
+        if (typeof object[getter] === 'function')
+            return object[getter]();
+        else
+            return object[property];
+    }
+
+    var setProperty = function (object, setter, property, value) {
+        // Use setter method if present; otherwise, set the property directly.
+        if (typeof object[setter] === 'function')
+            object[setter](value);
+        else
+            object[property] = value;
+    }
+
+    describe('DaDaPushMessageApi', function () {
+        describe('createMessage', function () {
+            it('should call createMessage successfully', function (done) {
+                let body = new DaDaPushClient.MessagePushRequest();
+                body.title = "Good News!";
+                body.content = "Good News! DaDaPush releasing new version";
+                body.needPush = true;
+                let action = new DaDaPushClient.Action();
+                action.name = "view";
+                action.url = "https://www.dadapush.com/";
+                action.type = "link";
+                body.actions = [action];
+                instance.createMessage(body, channelToken, function (error, resp, http) {
+                    console.log(resp);
+                });
+                done();
+            });
+        });
+        describe('deleteMessage', function () {
+            it('should call deleteMessage successfully', function (done) {
+                let messageId = 227871;
+                instance.deleteMessage(messageId, channelToken, function (error, resp, http) {
+                    console.log(resp);
+                });
+                done();
+            });
+        });
+        describe('getMessage', function () {
+            it('should call getMessage successfully', function (done) {
+                let messageId = 227871;
+                instance.getMessage(messageId, channelToken, function (error, resp, http) {
+                    console.log(resp);
+                });
+                done();
+            });
+        });
+        describe('getMessages', function () {
+            it('should call getMessages successfully', function (done) {
+                let page = 1;
+                let pageSize = 10;
+                instance.getMessages(page, pageSize, channelToken, function (error, resp, http) {
+                    console.log(resp);
+                });
+                done();
+            });
+        });
     });
-    describe('getMessage', function() {
-      it('should call getMessage successfully', function(done) {
-        //uncomment below and update the code to test getMessage
-        //instance.getMessage(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getMessages', function() {
-      it('should call getMessages successfully', function(done) {
-        //uncomment below and update the code to test getMessages
-        //instance.getMessages(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-  });
 
 }));

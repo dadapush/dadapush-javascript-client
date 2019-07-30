@@ -27,7 +27,7 @@ import DadapushClient from 'dadapush-client';
 let apiInstance = new DadapushClient.DaDaPushMessageApi();
 let body = new DadapushClient.MessagePushRequest(); // MessagePushRequest | body
 let opts = {
-  'xChannelToken': "xChannelToken_example" // String | see: https://www.dadapush.com/channel/list
+  'channelToken': "channelToken_example" // String | see: https://www.dadapush.com/channel/list
 };
 apiInstance.createMessage(body, opts, (error, data, response) => {
   if (error) {
@@ -44,7 +44,7 @@ apiInstance.createMessage(body, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MessagePushRequest**](MessagePushRequest.md)| body | 
- **xChannelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
+ **channelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
 
 ### Return type
 
@@ -76,7 +76,7 @@ import DadapushClient from 'dadapush-client';
 let apiInstance = new DadapushClient.DaDaPushMessageApi();
 let messageId = 789; // Number | messageId
 let opts = {
-  'xChannelToken': "xChannelToken_example" // String | see: https://www.dadapush.com/channel/list
+  'channelToken': "channelToken_example" // String | see: https://www.dadapush.com/channel/list
 };
 apiInstance.deleteMessage(messageId, opts, (error, data, response) => {
   if (error) {
@@ -93,7 +93,7 @@ apiInstance.deleteMessage(messageId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **messageId** | **Number**| messageId | 
- **xChannelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
+ **channelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
 
 ### Return type
 
@@ -125,7 +125,7 @@ import DadapushClient from 'dadapush-client';
 let apiInstance = new DadapushClient.DaDaPushMessageApi();
 let messageId = 789; // Number | messageId
 let opts = {
-  'xChannelToken': "xChannelToken_example" // String | see: https://www.dadapush.com/channel/list
+  'channelToken': "channelToken_example" // String | see: https://www.dadapush.com/channel/list
 };
 apiInstance.getMessage(messageId, opts, (error, data, response) => {
   if (error) {
@@ -142,7 +142,7 @@ apiInstance.getMessage(messageId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **messageId** | **Number**| messageId | 
- **xChannelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
+ **channelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
 
 ### Return type
 
@@ -175,7 +175,7 @@ let apiInstance = new DadapushClient.DaDaPushMessageApi();
 let page = 1; // Number | greater than 1
 let pageSize = 10; // Number | range is 1,50
 let opts = {
-  'xChannelToken': "xChannelToken_example" // String | see: https://www.dadapush.com/channel/list
+  'channelToken': "channelToken_example" // String | see: https://www.dadapush.com/channel/list
 };
 apiInstance.getMessages(page, pageSize, opts, (error, data, response) => {
   if (error) {
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **Number**| greater than 1 | [default to 1]
  **pageSize** | **Number**| range is 1,50 | [default to 10]
- **xChannelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
+ **channelToken** | **String**| see: https://www.dadapush.com/channel/list | [optional] 
 
 ### Return type
 

@@ -50,13 +50,11 @@ export default class DaDaPushMessageApi {
      * push Message to a Channel
      * <h2>Rate Limit:</h2><ul><li>1 request per 1s</li><li>30 request per 1m</li><li>500 request per 1h</li></ul><h2>Result code/errmsg List:</h2><ul><li>0: ok</li><li>1: server error</li><li>101: channel is exists</li><li>102: channel is not exists</li><li>103: channel token error</li><li>104: channel is not exists</li><li>105: message is not exists</li><li>204: bad request</li><li>205: permission deny</li><li>206: too many request, please after 5 minutes to try!</li><li>301: duplicate username/email</li><li>302: user is not exists</li><li>303: user password is error</li><li>304: client push token is error</li><li>305: user is disabled</li><li>306: your subscription is expired</li><li>307: user not subscribe channel</li></ul>
      * @param {module:model/MessagePushRequest} body body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xChannelToken see: https://www.dadapush.com/channel/list
+     * @param {String} channelToken see: https://www.dadapush.com/channel/list
      * @param {module:api/DaDaPushMessageApi~createMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ResultOfMessagePushResponse}
      */
-    createMessage(body, opts, callback) {
-      opts = opts || {};
+    createMessage(body, channelToken, callback) {
       let postBody = body;
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
@@ -68,7 +66,7 @@ export default class DaDaPushMessageApi {
       let queryParams = {
       };
       let headerParams = {
-        'x-channel-token': opts['xChannelToken']
+        'x-channel-token': channelToken
       };
       let formParams = {
       };
@@ -96,13 +94,11 @@ export default class DaDaPushMessageApi {
      * delete a Channel Message
      * <h2>Rate Limit:</h2><ul><li>10 request per 1s</li><li>100 request per 1m</li><li>1000 request per 1h</li></ul><h2>Result code/errmsg List:</h2><ul><li>0: ok</li><li>1: server error</li><li>101: channel is exists</li><li>102: channel is not exists</li><li>103: channel token error</li><li>104: channel is not exists</li><li>105: message is not exists</li><li>204: bad request</li><li>205: permission deny</li><li>206: too many request, please after 5 minutes to try!</li><li>301: duplicate username/email</li><li>302: user is not exists</li><li>303: user password is error</li><li>304: client push token is error</li><li>305: user is disabled</li><li>306: your subscription is expired</li><li>307: user not subscribe channel</li></ul>
      * @param {Number} messageId messageId
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xChannelToken see: https://www.dadapush.com/channel/list
+     * @param {String} channelToken see: https://www.dadapush.com/channel/list
      * @param {module:api/DaDaPushMessageApi~deleteMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Result}
      */
-    deleteMessage(messageId, opts, callback) {
-      opts = opts || {};
+    deleteMessage(messageId, channelToken, callback) {
       let postBody = null;
       // verify the required parameter 'messageId' is set
       if (messageId === undefined || messageId === null) {
@@ -115,7 +111,7 @@ export default class DaDaPushMessageApi {
       let queryParams = {
       };
       let headerParams = {
-        'x-channel-token': opts['xChannelToken']
+        'x-channel-token': channelToken
       };
       let formParams = {
       };
@@ -143,17 +139,18 @@ export default class DaDaPushMessageApi {
      * get a Channel Message
      * <h2>Rate Limit:</h2><ul><li>10 request per 1s</li><li>100 request per 1m</li><li>1000 request per 1h</li></ul><h2>Result code/errmsg List:</h2><ul><li>0: ok</li><li>1: server error</li><li>101: channel is exists</li><li>102: channel is not exists</li><li>103: channel token error</li><li>104: channel is not exists</li><li>105: message is not exists</li><li>204: bad request</li><li>205: permission deny</li><li>206: too many request, please after 5 minutes to try!</li><li>301: duplicate username/email</li><li>302: user is not exists</li><li>303: user password is error</li><li>304: client push token is error</li><li>305: user is disabled</li><li>306: your subscription is expired</li><li>307: user not subscribe channel</li></ul>
      * @param {Number} messageId messageId
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xChannelToken see: https://www.dadapush.com/channel/list
+     * @param {String} channelToken see: https://www.dadapush.com/channel/list
      * @param {module:api/DaDaPushMessageApi~getMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ResultOfMessageObject}
      */
-    getMessage(messageId, opts, callback) {
-      opts = opts || {};
+    getMessage(messageId, channelToken, callback) {
       let postBody = null;
       // verify the required parameter 'messageId' is set
       if (messageId === undefined || messageId === null) {
         throw new Error("Missing the required parameter 'messageId' when calling getMessage");
+      }
+      if (channelToken === undefined || channelToken === null) {
+        throw new Error("Missing the required parameter 'channelToken' when calling getMessage");
       }
 
       let pathParams = {
@@ -162,7 +159,7 @@ export default class DaDaPushMessageApi {
       let queryParams = {
       };
       let headerParams = {
-        'x-channel-token': opts['xChannelToken']
+        'x-channel-token': channelToken
       };
       let formParams = {
       };
@@ -191,13 +188,11 @@ export default class DaDaPushMessageApi {
      * <h2>Rate Limit:</h2><ul><li>1 request per 1s</li><li>45 request per 1m</li></ul><h2>Result code/errmsg List:</h2><ul><li>0: ok</li><li>1: server error</li><li>101: channel is exists</li><li>102: channel is not exists</li><li>103: channel token error</li><li>104: channel is not exists</li><li>105: message is not exists</li><li>204: bad request</li><li>205: permission deny</li><li>206: too many request, please after 5 minutes to try!</li><li>301: duplicate username/email</li><li>302: user is not exists</li><li>303: user password is error</li><li>304: client push token is error</li><li>305: user is disabled</li><li>306: your subscription is expired</li><li>307: user not subscribe channel</li></ul>
      * @param {Number} page greater than 1
      * @param {Number} pageSize range is 1,50
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xChannelToken see: https://www.dadapush.com/channel/list
+     * @param {String} channelToken see: https://www.dadapush.com/channel/list
      * @param {module:api/DaDaPushMessageApi~getMessagesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ResultOfPageResponseOfMessageObject}
      */
-    getMessages(page, pageSize, opts, callback) {
-      opts = opts || {};
+    getMessages(page, pageSize, channelToken, callback) {
       let postBody = null;
       // verify the required parameter 'page' is set
       if (page === undefined || page === null) {
@@ -207,6 +202,9 @@ export default class DaDaPushMessageApi {
       if (pageSize === undefined || pageSize === null) {
         throw new Error("Missing the required parameter 'pageSize' when calling getMessages");
       }
+      if (channelToken === undefined || channelToken === null) {
+        throw new Error("Missing the required parameter 'channelToken' when calling getMessages");
+      }
 
       let pathParams = {
       };
@@ -215,7 +213,7 @@ export default class DaDaPushMessageApi {
         'pageSize': pageSize
       };
       let headerParams = {
-        'x-channel-token': opts['xChannelToken']
+        'x-channel-token': channelToken
       };
       let formParams = {
       };

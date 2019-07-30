@@ -59,7 +59,7 @@ npm run build
 
 #### git
 
-If the library is hosted at a git repository, e.g.https://github.com/GIT_USER_ID/GIT_REPO_ID
+If the library is hosted at a git repository, e.g.https://github.com/dadapush/dadapush-javascript-client
 then install it via:
 
 ```shell
@@ -106,9 +106,7 @@ var DadapushClient = require('dadapush-client');
 
 var api = new DadapushClient.DaDaPushMessageApi()
 var body = new DadapushClient.MessagePushRequest(); // {MessagePushRequest} body
-var opts = {
-  'xChannelToken': "xChannelToken_example" // {String} see: https://www.dadapush.com/channel/list
-};
+channelToken = "channelToken_example" // {String} see: https://www.dadapush.com/channel/list
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -116,7 +114,8 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.createMessage(body, opts, callback);
+api.createMessage(body, channelToken, callback);
+
 
 ```
 
@@ -143,8 +142,3 @@ Class | Method | HTTP request | Description
  - [DadapushClient.ResultOfMessageObject](docs/ResultOfMessageObject.md)
  - [DadapushClient.ResultOfMessagePushResponse](docs/ResultOfMessagePushResponse.md)
  - [DadapushClient.ResultOfPageResponseOfMessageObject](docs/ResultOfPageResponseOfMessageObject.md)
-
-
-## Documentation for Authorization
-
-All endpoints do not require authorization.
